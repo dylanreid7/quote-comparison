@@ -11,7 +11,6 @@ const MONGO_URI = process.env.MONGO_URI || '';
 app.use(express.json());
 app.use(cors());
 
-
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
@@ -21,7 +20,13 @@ app.get('/quote-comparison', async (req, res) => {
   console.log('Hitting server.  Quote ID: ', quoteId);
   try {
     const quote = await QuotesModel.findById(quoteId);
-    console.log('quote: ', quote);
+    
+    if (!quote) {
+      res.status(404).json({ message: 'Quote not found.'});
+      return;
+    }
+
+    res.json(quote);
   } catch (err) {
     console.error(err);
   }
