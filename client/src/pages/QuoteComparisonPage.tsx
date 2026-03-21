@@ -2,28 +2,29 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './QuoteComparisonPage.css';
 import { getQuoteById } from '../api';
+import QuotesTable from '../components/QuotesTable';
 
-interface Quote {
-    _id: string;
-    customerName: string;
-    offers: Offer[];
-  }
+export interface Quote {
+  _id: string;
+  customerName: string;
+  offers: Offer[];
+}
   
-  interface Offer {
-    _id: string;
-    supplierId: string;
-    item: Item[];
-    shippingPrice: number;
-    totalPrice: number;
-    leadTime: number;
-  }
-  
-  interface Item {
-    _id: string;
-    itemId: string;
-    unitPrice: number;
-    quantity: number;
-  }
+export interface Offer {
+  _id: string;
+  supplierId: string;
+  item: Item[];
+  shippingPrice: number;
+  totalPrice: number;
+  leadTime: number;
+}
+
+export interface Item {
+  _id: string;
+  itemId: string;
+  unitPrice: number;
+  quantity: number;
+}
 
 function QuoteComparisonPage() {
   const { quoteId } = useParams<{ quoteId: string }>();
@@ -47,8 +48,7 @@ function QuoteComparisonPage() {
 
   return (
     <div>
-      <div>Data found: { data._id }</div>
-      <div>Total price: { data.customerName }</div>
+      <QuotesTable quote={data} />
     </div>
   );
 }
