@@ -13,6 +13,9 @@ export interface Quote {
 export interface Offer {
   _id: string;
   supplierId: string;
+  supplierName: string;
+  supplierCountry: string;
+  supplierRating: string;
   item: Item[];
   shippingPrice: number;
   totalPrice: number;
@@ -22,6 +25,7 @@ export interface Offer {
 export interface Item {
   _id: string;
   itemId: string;
+  itemName: string;
   unitPrice: number;
   quantity: number;
 }
