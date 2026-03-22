@@ -62,7 +62,6 @@ app.get('/quote-comparison', async (req, res) => {
         itemMap.set(id, dbItem.name);
     }
 
-
     const responseQuote = {
       quoteId: quote._id,
       customerName: quote.customerName,
@@ -73,7 +72,7 @@ app.get('/quote-comparison', async (req, res) => {
         supplierRating: supplierMap.get(offer.supplierId)?.supplierRating ?? '',
         items: offer.items.map((item) => ({
           itemId: item.itemId,
-          itemName: itemMap.get(item.itemId)?.name ?? item.itemId,
+          itemName: itemMap.get(item.itemId) ?? item.itemId,
           unitPrice: item.unitPrice,
           quantity: item.quantity,
         })),
