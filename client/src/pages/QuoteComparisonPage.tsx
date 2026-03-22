@@ -16,7 +16,7 @@ export interface Offer {
   supplierName: string;
   supplierCountry: string;
   supplierRating: string;
-  item: Item[];
+  items: Item[];
   shippingPrice: number;
   totalPrice: number;
   leadTime: number;
