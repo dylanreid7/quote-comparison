@@ -1,0 +1,10 @@
+.supplier-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .name-country {
+        display: flex;
+        flex-direction: column;
+    }
+}
